@@ -31,10 +31,7 @@ const feedSchema=mongoose.Schema({
         
         },
         content: String,
-        created_at: {
-          type: Date,
-          default: Date.now
-        }
+        
       }],
 
 },{timestamps:true,

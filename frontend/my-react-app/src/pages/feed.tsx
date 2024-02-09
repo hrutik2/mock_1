@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { Navbar } from "../component/navbar";
 
 export const Feed = () => {
-  return (
+  return (<>
+    <Navbar/>
     <DIV>
       <FilterSidebar>
         <P>Filter Posts</P>
@@ -28,11 +30,13 @@ export const Feed = () => {
         <button>Create Post</button>
       </AllPost>
     </DIV>
+    </>
   );
 };
 
 const DIV= styled.div`
   width: 100%;
+  height:900px;
   padding:10px;
   background-color: hsla(208, 18%, 14%, 1);
   display: flex;

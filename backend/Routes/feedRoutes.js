@@ -14,6 +14,7 @@ feed.get("/posts",async(req,res)=>{
 })
 
 feed.post("/posts",Athentication,async(req,res)=>{
+     console.log(req.body)
     try {
         const feed=new feedModule(req.body)
         await feed.save()
@@ -60,10 +61,28 @@ feed.post("/posts/:post_id/like",Athentication, async (req, res) => {
             return res.status(404).json({ error: 'Post not found' });
         }
         const like = feed.likes;
-        
-        console.log(like,req.body)
-        // await feedModule.findOneAndUpdate({ _id: post_id });
+         like.push(req.body.user_id)
+        console.log(like)
+        await feedModule.findOneAndUpdate({_id:post_id},{likes:like})
         res.status(200).json({ message: 'Post liked successfully' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+feed.post("/posts/:post_id/comment",Athentication, async (req, res) => {
+    const { post_id } = req.params; // Corrected parameter name to post_id
+    try {
+        const feed = await feedModule.findOne({ _id: post_id }); 
+        //console.log(feed)
+        if (!feed) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+        const comment = feed.comments;
+         comment.push(req.body)
+       
+        await feedModule.findOneAndUpdate({_id:post_id},{comments:comment})
+        res.status(200).json({ message: 'Post commented successfully' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

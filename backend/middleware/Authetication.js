@@ -10,7 +10,7 @@ const Athentication=(req,res,next)=>{
             }
             else{
                 console.log(decoded.user_id)
-                req.user_id=decoded.user_id
+                req.body.user_id = decoded.user_id;
                 next()
             }
           })
