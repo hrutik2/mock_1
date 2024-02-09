@@ -1,0 +1,29 @@
+import { Dive, LoginDiv } from "./login"
+
+export const Sigup=()=>{
+    return(
+        <LoginDiv>
+        <Dive>
+            <h1 style={{textAlign:"center"}}>signup</h1>
+             <form>
+                <label>userName</label>
+                <br></br>
+                <input placeholder="userName"></input>
+                <br></br>
+                <label>avatar</label>
+                <br></br>
+                <input placeholder="userimg"></input>
+                <br></br>
+                <label>Login</label>
+                <br></br>
+                <input placeholder="Email"></input>
+                <br></br>
+                <label>password</label>
+                <br></br>
+                <input placeholder="Email"></input>
+                <button type="submit">Sign in</button>
+               </form>
+        </Dive>
+        </LoginDiv>
+    )
+}
